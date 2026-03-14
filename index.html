@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raipbt Roleta dos Amigos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- LOGIN / CADASTRO -->
+  <div id="login-screen" class="screen">
+    <h1>Raipbt Roleta dos Amigos</h1>
+    <div id="login-tab">
+      <input id="login-username" type="text" placeholder="Nome de usuário">
+      <input id="login-password" type="password" placeholder="Senha">
+      <button onclick="handleLogin()">Entrar</button>
+      <p id="login-error"></p>
+    </div>
+    <div id="signup-tab" style="display:none;">
+      <input id="signup-username" type="text" placeholder="Escolha um nome">
+      <input id="signup-password" type="password" placeholder="Crie uma senha">
+      <input id="signup-secret" type="password" placeholder="Senha secreta (1787)">
+      <button onclick="handleSignup()">Criar Conta</button>
+      <p id="signup-error"></p>
+    </div>
+    <button onclick="switchAuthTab()">Alternar Login/Cadastro</button>
+  </div>
+
+  <!-- SITE PRINCIPAL -->
+  <div id="main-screen" style="display:none;">
+    <header>
+      <h1>💰 Raipbt Roleta dos Amigos 💰</h1>
+      <button onclick="handleLogout()">Sair</button>
+    </header>
+
+    <!-- ROLETA -->
+    <section>
+      <canvas id="wheel-canvas" width="300" height="300"></canvas>
+      <button onclick="spinWheel()">Sortear</button>
+      <div id="result-display"></div>
+    </section>
+
+    <!-- HISTÓRICO E RANKING -->
+    <aside>
+      <div>
+        <h2>Histórico</h2>
+        <div id="history-list">Nenhum sorteio ainda</div>
+      </div>
+      <div>
+        <h2>Ranking Semanal</h2>
+        <div id="ranking-list">Ninguém sorteou ainda</div>
+      </div>
+    </aside>
+
+    <!-- ADMIN -->
+    <div id="admin-panel" style="display:none;">
+      <h2>Painel Admin</h2>
+      <input id="multiplier-input" type="number" value="1" min="1" step="0.1">
+      <button onclick="applyMultiplier()">Aplicar Multiplicador</button>
+
+      <input id="personal-amount" type="number" placeholder="Adicionar saldo pessoal">
+      <button onclick="addPersonalBalance()">Add</button>
+
+      <select id="user-select"></select>
+      <input id="user-amount" type="number" placeholder="Adicionar saldo a usuário">
+      <button onclick="addBalanceToUser()">Add</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
